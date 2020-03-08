@@ -6,13 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="cucumber-ios-appium" />
         <module name="junit-ios-appium" />
+        <module name="cucumber-ios-appium" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="cucumber-ios-appium" target="1.5" />
-      <module name="junit-ios-appium" target="1.5" />
+      <module name="junit-ios-appium" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
