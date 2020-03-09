@@ -17,9 +17,9 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-public abstract class BaseClass
+public abstract class IosBaseClass
 {
-    private static final Logger logger = LoggerFactory.getLogger(BaseClass.class);
+    private static final Logger logger = LoggerFactory.getLogger(IosBaseClass.class);
 
     private static final int WEB_DRIVER_WAIT_TIMEOUT = 15;
 
@@ -55,28 +55,25 @@ public abstract class BaseClass
 
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
-
             capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
             capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13.2");
             capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Iphone XR");
-            capabilities.setCapability("newCommandTimeout", "600");
-            capabilities.setCapability("waitForAppScript", "$.delay(5000); $.acceptAlert();");
-            capabilities.setCapability("waitForQuiescence", "false");
-            capabilities.setCapability("usePrebuiltWDA", "true");
-            capabilities.setCapability("udid", "00008020-001675360CD1002E");
+            capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "600");
+            capabilities.setCapability(IOSMobileCapabilityType.USE_PREBUILT_WDA, "true");
+            capabilities.setCapability(MobileCapabilityType.UDID, "00008020-001675360CD1002E");
             capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
-            capabilities.setCapability("nativeInstrumentsLib", "true");
-            capabilities.setCapability("useJSONSource", true);
+            capabilities.setCapability(IOSMobileCapabilityType.NATIVE_INSTRUMENTS_LIB, "true");
             capabilities.setCapability(IOSMobileCapabilityType.LOCATION_SERVICES_ENABLED, true);
             capabilities.setCapability(IOSMobileCapabilityType.LOCATION_SERVICES_AUTHORIZED, true);
             capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, "false");
             capabilities.setCapability(IOSMobileCapabilityType.IOS_INSTALL_PAUSE, "8000");
+            capabilities.setCapability("waitForAppScript", "$.delay(5000); $.acceptAlert();");
+            capabilities.setCapability("waitForQuiescence", "false");
 
             URL url = null;
 
             try
             {
-
                 url = new URL("http://127.0.0.1:4723/wd/hub");
                 driver = new IOSDriver(url, capabilities);
 
